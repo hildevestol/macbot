@@ -19,9 +19,9 @@ Gem::Specification.new do |spec|
   spec.executables   = ["macbot"]
   spec.require_paths = ["lib"]
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
+  # if spec.respond_to?(:metadata)
+  #   spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
+  # end
 
   spec.add_dependency 'commander', '~> 4.1.5'
 
