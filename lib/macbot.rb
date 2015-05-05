@@ -1,4 +1,5 @@
 require 'macbot/metadata'
+require 'yaml'
 
 module Macbot
   # Your code goes here...
@@ -13,11 +14,11 @@ module Macbot
 
   def self.accounts(type, options)
     enable = enabled(options)
-    const = const_get type.upcase
-
+    data = YAML.load_file(Macbot::YAML_PATH)
+    emails = data[type]
     string = ''
-    string += build_string(const, enable)
-    string += enable_zen(const, enable) if options.zen
+    string += build_string(emails, enable)
+    string += enable_zen(emails, enable) if options.zen
 
     MAIL_START + string + MAIL_END
   end
@@ -40,7 +41,7 @@ module Macbot
     arr.each do |account|
       puts "set #{account} to #{enable}"
       string << <<-END
-        set enabled of account "#{account}" to #{enable}
+        set enabled of account "#{account.to_s}" to #{enable}
       END
     end
     string

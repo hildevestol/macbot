@@ -28,7 +28,7 @@ module Macbot
       c.syntax = 'add [options]'
       c.description = 'add values to yml file'
       c.option '--group STRING', String, 'Create email group'
-      c.option '--email STING', String, 'Add email to group'
+      c.option '--account STING', String, 'Add email to group'
       c.action do |args, options|
         abort("Missing group") unless options.group
         data = YAML.load_file(Macbot::YAML_PATH)
@@ -38,16 +38,16 @@ module Macbot
           puts "Created new email group: #{options.group}"
         end
 
-        if options.email
+        if options.account
           data[options.group].each do |h|
-            if h.to_s == options.email.to_s
-              abort "The email #{options.email} is already in group #{options.group}"
+            if h.to_s == options.account.to_s
+              abort "The email #{options.account} is already in group #{options.group}"
             end
           end
-          data[options.group] << options.email
-          puts "Added #{options.email} to group #{options.group}"
+          data[options.group] << options.account
+          puts "Added #{options.account} to group #{options.group}"
         else
-          abort("This group already exist, add email to group by writing \nmacbot add --group #{options.group} --email your email address")
+          abort("This group already exist, add email to group by writing \nmacbot add --group #{options.group} --account your email address")
         end
 
         File.open(Macbot::YAML_PATH, 'w') { |f| YAML.dump(data, f) }
@@ -58,17 +58,17 @@ module Macbot
       c.syntax = 'remove [options]'
       c.description = 'remove values from yml file'
       c.option '--group STRING', String, 'remove email group'
-      c.option '--email STING', String, 'remove email from group'
+      c.option '--account STING', String, 'remove email from group'
       c.action do |args, options|
         abort("Missing group") unless options.group
         data = YAML.load_file(Macbot::YAML_PATH)
 
-        if options.email
+        if options.account
           data[options.group].each do |e|
-            if e.to_s == options.email
+            if e.to_s == options.account
               data[options.group].delete(e)
               File.open(Macbot::YAML_PATH, 'w') { |f| YAML.dump(data, f) }
-              puts "The email #{options.email} was deleted from group #{options.group}"
+              puts "The email #{options.account} was deleted from group #{options.group}"
             end
           end
         else
