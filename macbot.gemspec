@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = Macbot::SUMMARY
   spec.description   = Macbot::SUMMARY
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/hildevestol/macbot"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "bin"
