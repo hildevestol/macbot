@@ -11,7 +11,7 @@ I often found myself in the situation where I'm at work and personal email keeps
 
     $ gem install macbot
 
-    $ macbot setup #creats initial yml file
+    $ macbot setup #creates initial yml file
 ## Usage
 The initial setup has two groups: work and privat, but you can create your own groups and manage them as you like
 
