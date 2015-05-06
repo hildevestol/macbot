@@ -1,7 +1,7 @@
 require 'yaml'
 
 module Macbot
-  VERSION = '0.1.4'
+  VERSION = '0.1.5'
   NAME = 'Macbot'
   SUMMARY = 'Set it up to disable/enable email accounts in Mail for OSX'
   YAML_PATH = File.join(Dir.home, '/.macbot.yml')
