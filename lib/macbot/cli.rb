@@ -30,7 +30,7 @@ module Macbot
       c.option '--group STRING', String, 'Create email group'
       c.option '--account STING', String, 'Add email to group'
       c.action do |args, options|
-        abort("Missing group") unless options.group
+        abort('Missing group') unless options.group
         data = YAML.load_file(Macbot::YAML_PATH)
 
         unless data[options.group]
@@ -60,7 +60,7 @@ module Macbot
       c.option '--group STRING', String, 'remove email group'
       c.option '--account STING', String, 'remove email from group'
       c.action do |args, options|
-        abort("Missing group") unless options.group
+        abort('Missing group') unless options.group
         data = YAML.load_file(Macbot::YAML_PATH)
 
         if options.account
@@ -86,7 +86,7 @@ module Macbot
       c.description = 'creat yml file'
       c.action do |args, options|
         if File.exists? Macbot::YAML_PATH
-          unless agree("Are u sure?")
+          unless agree('Are u sure? This will reset all your settings')
             abort "Ok, I didn't remove anything"
           end
         end

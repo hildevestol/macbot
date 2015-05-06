@@ -14,6 +14,9 @@ I often found myself in the situation where I'm at work and personal email keeps
     $ gem install macbot
 
     $ macbot setup #creates initial yml file
+    
+A file `.macbot.yml` is created in your home directory. You can edit the file directly or use the commands below to add groups and accounts
+    
 ## Usage
 The initial setup has two groups: work and privat, but you can create your own groups and manage them as you like
 
@@ -27,19 +30,20 @@ The initial setup has two groups: work and privat, but you can create your own g
 
     $ macbot add --group yourGroupName --account youAccountName
 
+
 ### Disable/Enable accounts
 
 If your config is the following
 ````yaml
 work:
-  work1
-  work2
+- work1
+- work2
 private:
-  private1
-  private2
+- private1
+- private2
 someother:
-  other1
-  other2
+- other1
+- other2
 ````      
 And u simply want to enable your work accounts
 
