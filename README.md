@@ -1,5 +1,7 @@
 # Macbot
 
+[![Gem Version](https://badge.fury.io/rb/macbot.svg)](http://badge.fury.io/rb/macbot)
+
 This is a gem for better workflow on you Mac. This only works on OSX and Mail. 
 For now the only thing the gem does is Disable and Enables email accounts, but I have planned to add more stuff that I feel wil make it easier to balanse between work and fun on my mac.
 
