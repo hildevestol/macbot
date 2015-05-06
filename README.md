@@ -1,7 +1,7 @@
 # Macbot
 
 This is a gem for better workflow on you Mac. This only works on OSX and Mail. 
-For now the only thing the gem does is Disable and Enables email accounts. 
+For now the only thing the gem does is Disable and Enables email accounts, but I have planned to add more stuff that I feel wil make it easier to balanse between work and fun on my mac.
 
 ## Why this gem?
 I often found myself in the situation where I'm at work and personal email keeps flying into my mailbox, or I'm at home enjoying my weekend and work mail keeps flying in. This was really annoying, and manually disable accounts in Mail didn't cut it for me. So this is a gem you can use for disabling and enabling groups of email accounts. 
@@ -60,11 +60,6 @@ Commands directly to your email group
     $ macbot work --help
     $ macbot [group] --help
 
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
