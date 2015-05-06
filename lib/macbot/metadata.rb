@@ -1,7 +1,7 @@
 require 'yaml'
 
 module Macbot
-  VERSION = '0.1.3'
+  VERSION = '0.1.4'
   NAME = 'Macbot'
   SUMMARY = 'Set it up to disable/enable accounts'
   YAML_PATH = 'email.yml'

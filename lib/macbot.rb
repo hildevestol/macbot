@@ -18,7 +18,7 @@ module Macbot
     emails = data[type]
     string = ''
     string += build_string(emails, enable)
-    string += enable_zen(emails, enable) if options.zen
+    string += enable_zen(type, enable, data) if options.zen
 
     MAIL_START + string + MAIL_END
   end
@@ -31,9 +31,13 @@ module Macbot
     puts 'what?'
   end
 
-  def self.enable_zen(const, enable)
+  def self.enable_zen(type, enable, data)
     puts 'enable zen mode'
-    build_string((Macbot::EMAIL_GROUPS - const), !enable)
+    string = ''
+    Macbot::EMAIL_GROUPS.each do |group|
+      string += build_string(data[group], !enable) unless group == type
+    end
+    string
   end
 
   def self.build_string(arr, enable)
