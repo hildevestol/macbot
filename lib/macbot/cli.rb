@@ -90,19 +90,19 @@ module Macbot
             abort "Ok, I didn't remove anything"
           end
         end
-        out_file = File.new(Macbot::YAML_PATH, "w")
-        out_file.puts('work:')
-        out_file.puts('private:')
-        out_file.close
+
+        file = File.new(Macbot::YAML_PATH, 'w')
+        args = %w{work private} unless args.length > 0
+        args.each { |arg| file.puts "#{arg}:"}
+        file.close
       end
     end
 
     command :read do |c|
       c.syntax = 'read'
       c.description = 'read yml file'
-      c.action do |args, options|
-        data = YAML.load_file(Macbot::YAML_PATH)
-        puts data
+      c.action do
+        puts YAML.load_file(Macbot::YAML_PATH)
       end
     end
   end
