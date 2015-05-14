@@ -18,7 +18,15 @@ module Macbot
         c.option '--zen', 'Enter zen mode, disable all other accounts'
         c.option '--enable', 'Enable accounts'
         c.option '--disable', 'Disable accounts'
-        c.action do |_args, options|
+        c.action do |args, options|
+          unless options.enable || options.disable
+            abort 'You must provide either --enable or --disable'
+          end
+
+          if options.enable && options.disable
+            abort "You can't both enable and disable the account group"
+          end
+
           applescript Macbot.accounts(email_group, options)
         end
       end

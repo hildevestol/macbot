@@ -19,11 +19,10 @@ END
   def self.enabled(options)
     return true if options.enable
     return false if options.disable
-    puts 'what?'
   end
 
   def self.enable_zen(type, enable, data)
-    puts 'enable zen mode'
+    puts 'Enabling zen mode'
     Macbot::EMAIL_GROUPS.map do |group|
       build_string(data[group], !enable) unless group == type
     end.join
