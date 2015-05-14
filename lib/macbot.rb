@@ -8,11 +8,10 @@ module Macbot
     string = build_string(data[email_group], enable)
     string += enable_zen(email_group, enable, data) if options.zen
 
-    <<-END
-      tell application "Mail"
-        #{string}
-      end tell
-    END
+<<-END
+tell application "Mail"
+#{string}end tell
+END
   end
 
   private
@@ -33,9 +32,9 @@ module Macbot
   def self.build_string(arr, enable)
     arr.map do |account|
       puts "set #{account} to #{enable}"
-      <<-END
-        set enabled of account "#{account}" to #{enable}
-      END
+<<-END
+  set enabled of account "#{account}" to #{enable}
+END
     end.join
   end
 end
