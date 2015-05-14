@@ -2,12 +2,11 @@ require 'macbot/metadata'
 require 'yaml'
 
 module Macbot
-  def self.accounts(type, options)
+  def self.accounts(email_group, options)
     enable = enabled(options)
     data = YAML.load_file(Macbot::YAML_PATH)
-    emails = data[type]
-    string = build_string(emails, enable)
-    string += enable_zen(type, enable, data) if options.zen
+    string = build_string(data[email_group], enable)
+    string += enable_zen(email_group, enable, data) if options.zen
 
     <<-END
       tell application "Mail"
