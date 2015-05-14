@@ -16,12 +16,10 @@ module Macbot
         c.syntax = "#{email_group} [options]"
         c.description = "Enable/disable #{email_group}-accounts"
         c.option '--zen', 'Enter zen mode, disable all other accounts'
-        c.option '--enable', 'Enable accounts'
-        c.option '--disable', 'Disable accounts'
-        c.action do |args, options|
-          unless options.enable || options.disable
-            abort 'You must provide either --enable or --disable'
-          end
+        c.option '--enable', 'Enable accounts, default true'
+        c.option '--disable', 'Disable accounts, default false'
+        c.action do |_args, options|
+          options.default :enable => true, :disable => false
 
           if options.enable && options.disable
             abort "You can't both enable and disable the account group"
@@ -37,7 +35,7 @@ module Macbot
       c.description = 'add values to yml file'
       c.option '--group STRING', String, 'Create email group'
       c.option '--account STING', String, 'Add email to group'
-      c.action do |args, options|
+      c.action do |_args, options|
         abort('Missing group') unless options.group
         data = YAML.load_file(Macbot::YAML_PATH)
 
@@ -67,7 +65,7 @@ module Macbot
       c.description = 'remove values from yml file'
       c.option '--group STRING', String, 'remove email group'
       c.option '--account STING', String, 'remove email from group'
-      c.action do |args, options|
+      c.action do |_args, options|
         abort('Missing group') unless options.group
         data = YAML.load_file(Macbot::YAML_PATH)
 
@@ -92,7 +90,7 @@ module Macbot
     command :setup do |c|
       c.syntax = 'setup'
       c.description = 'creat yml file'
-      c.action do |args, options|
+      c.action do |args, _options|
         if File.exists? Macbot::YAML_PATH
           unless agree('Are u sure? This will reset all your settings')
             abort "Ok, I didn't remove anything"
